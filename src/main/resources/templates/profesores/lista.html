@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Lista de Profesores</title>
+</head>
+<body>
+<h1>Lista de Profesores</h1>
+
+<a th:href="@{/profesores/nuevo}">Nuevo Profesor</a>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Especialidad Principal</th>
+    <th>Especialidad Secundaria</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="profesor : ${profesores}">
+    <td th:text="${profesor.id}"></td>
+    <td th:text="${profesor.nombre}"></td>
+    <td th:text="${profesor.especialidad1}"></td>
+    <td th:text="${profesor.especialidad2} ?: 'No asignada'"></td>
+    <td>
+      <a th:href="@{/profesores/editar/{id}(id=${profesor.id})}">Editar</a> |
+      <a th:href="@{/profesores/eliminar/{id}(id=${profesor.id})}">Eliminar</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

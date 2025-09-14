@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Universidad - Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .menu {
+            margin-top: 30px;
+        }
+        .menu a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            text-decoration: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .menu a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<h1>Sistema de Gestión Universitaria</h1>
+<p>Bienvenido al sistema de gestión de alumnos, profesores y asignaturas.</p>
+
+<div class="menu">
+    <a th:href="@{/alumnos}">Gestión de Alumnos</a>
+    <a th:href="@{/profesores}">Gestión de Profesores</a>
+    <a th:href="@{/asignaturas}">Gestión de Asignaturas</a>
+</div>
+</body>
+</html>

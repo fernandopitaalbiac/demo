@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Nueva Asignatura</title>
+</head>
+<body>
+<h2 th:text="${asignatura.id} != null ? 'Editar Asignatura' : 'Nueva Asignatura'"></h2>
+
+<form th:action="@{/asignaturas}" th:object="${asignatura}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+
+  <label>Nombre de la asignatura:</label>
+  <input type="text" th:field="*{nombre}" placeholder="Nombre de la asignatura" required/><br/><br/>
+
+  <label>Profesor:</label>
+  <select th:field="*{profesor.id}" required>
+    <option value="">-- Selecciona un profesor --</option>
+    <option th:each="prof : ${profesores}"
+            th:value="${prof.id}"
+            th:text="${prof.nombre} + ' - ' + ${prof.especialidad1} +
+                        (${prof.especialidad2} ? ' / ' + ${prof.especialidad2} : '')"></option>
+  </select>
+  <br/><br/>
+
+  <label>
+    <input type="checkbox" name="usarComoEspecialidad2" value="true"/>
+    Usar esta asignatura como especialidad secundaria del profesor
+  </label>
+  <br/><br/>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<a th:href="@{/asignaturas}">Volver a la lista</a>
+</body>
+</html>
